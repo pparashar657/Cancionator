@@ -53,15 +53,12 @@ public class SplashScreen extends AppCompatActivity {
         logo.startAnimation(animation);
 
         startButton.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-                ActivityOptions options = null;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, v, "button");
-                }
-                startActivity(intent, options.toBundle());
+                startActivity(intent);
+                finishAfterTransition();
             }
         });
 
